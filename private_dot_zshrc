@@ -14,7 +14,7 @@ ZSH_THEME="spaceship-prompt/spaceship"
 # Dsable Auto Update and maintain updates via chezmoi (chezmoi -R apply)
 DISABLE_AUTO_UPDATE="true"  
 
-plugins=(git direnv docker docker-compose aws kubectl asdf zsh-completions zsh-autosuggestions fast-syntax-highlighting)
+plugins=(git direnv docker docker-compose aws kubectl asdf zsh-autoenv zsh-completions zsh-autosuggestions fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
