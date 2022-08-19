@@ -15,3 +15,7 @@ do
     export KUBECONFIG="$contextFile:$KUBECONFIG"
 done
 IFS="$OIFS"
+
+# set yamllint alias to match kubernetes format styling
+alias k8syl='yamllint -d "{extends: default, rules: {indentation:{indent-sequences: false},line-length:{max: 120}}}"'
+
