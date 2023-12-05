@@ -34,4 +34,8 @@ if [ -d $(brew --prefix) ]; then
   export ASDF_DIR="$(brew --prefix)/opt/asdf/libexec"
 fi
 
+if [[ -d $HOME/.krew ]]; then
+  export PATH=$HOME/.krew/bin:$PATH
+fi
+
 [ -f ~/.localrc ] && . ~/.localrc
