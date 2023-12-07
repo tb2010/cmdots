@@ -38,4 +38,7 @@ if [[ -d $HOME/.krew ]]; then
   export PATH=$HOME/.krew/bin:$PATH
 fi
 
+#remove the special character end of line prior to new prompts.
+export PROMPT_EOL_MARK=''
+
 [ -f ~/.localrc ] && . ~/.localrc
