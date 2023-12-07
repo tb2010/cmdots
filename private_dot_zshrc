@@ -38,7 +38,10 @@ if [[ -d $HOME/.krew ]]; then
   export PATH=$HOME/.krew/bin:$PATH
 fi
 
-#remove the special character end of line prior to new prompts.
+# Remove the special character end of line prior to new prompts.
 export PROMPT_EOL_MARK=''
+
+# Make LESS work more like what I like - don't clear screen and exit if less than 1 screene
+export LESS="-XF"
 
 [ -f ~/.localrc ] && . ~/.localrc
