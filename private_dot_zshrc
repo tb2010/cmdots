@@ -42,6 +42,6 @@ fi
 export PROMPT_EOL_MARK=''
 
 # Make LESS work more like what I like - don't clear screen and exit if less than 1 screene
-export LESS="-XF"
+export LESS="-XFR"
 
 [ -f ~/.localrc ] && . ~/.localrc
