@@ -30,8 +30,11 @@ fi
 autoload -Uz compinit && compinit
 
 # https://github.com/asdf-vm/asdf/issues/1103
-if [ -d $(brew --prefix) ]; then
-  export ASDF_DIR="$(brew --prefix)/opt/asdf/libexec"
+if type brew &>/dev/null
+then
+  if [ -d $(brew --prefix) ]; then
+    export ASDF_DIR="$(brew --prefix)/opt/asdf/libexec"
+  fi
 fi
 
 if [[ -d $HOME/.krew ]]; then

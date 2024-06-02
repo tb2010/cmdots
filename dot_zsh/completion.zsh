@@ -17,5 +17,8 @@ zstyle ':completion:*' menu select=2
 zstyle ':omz:update' mode disabled
 
 # TODO - put this in a conditionall
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-FPATH=$(brew --prefix)/share/site-functions:$FPATH
+if type brew &>/dev/null
+then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$(brew --prefix)/share/site-functions:$FPATH
+fi
