@@ -14,13 +14,20 @@ ZSH_THEME="spaceship-prompt/spaceship"
 # Dsable Auto Update and maintain updates via chezmoi (chezmoi -R apply)
 DISABLE_AUTO_UPDATE="true"  
 
-plugins=(git direnv docker docker-compose aws kubectl asdf zsh-autoenv zsh-completions zsh-autosuggestions fast-syntax-highlighting)
+ZDOTDIR_PRE="${ZDOTDIR_PRE:-$HOME/.zsh/pre}"
+if [[ -d "$ZDOTDIR_PRE" ]]; then
+  for file in "$ZDOTDIR_PRE"/**/*.zsh; do
+    source "$file"
+  done
+fi
+
+plugins=(git direnv docker docker-compose aws kubectl asdf zsh-autoenv zsh-completions zsh-autosuggestions fast-syntax-highlighting eza)
 
 source $ZSH/oh-my-zsh.sh
 
-ZDOTDIR="${ZDOTDIR:-$HOME/.zsh}"
-if [[ -d "$ZDOTDIR" ]]; then
-  for file in "$ZDOTDIR"/**/*.zsh; do
+ZDOTDIR_POST="${ZDOTDIR_POST:-$HOME/.zsh/post}"
+if [[ -d "$ZDOTDIR_POST" ]]; then
+  for file in "$ZDOTDIR_POST"/**/*.zsh; do
     source "$file"
   done
 fi
@@ -30,11 +37,8 @@ fi
 autoload -Uz compinit && compinit
 
 # https://github.com/asdf-vm/asdf/issues/1103
-if type brew &>/dev/null
-then
-  if [ -d $(brew --prefix) ]; then
-    export ASDF_DIR="$(brew --prefix)/opt/asdf/libexec"
-  fi
+if [ -d $(brew --prefix) ]; then
+  export ASDF_DIR="$(brew --prefix)/opt/asdf/libexec"
 fi
 
 if [[ -d $HOME/.krew ]]; then
@@ -48,3 +52,6 @@ export PROMPT_EOL_MARK=''
 export LESS="-XFR"
 
 [ -f ~/.localrc ] && . ~/.localrc
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/wstanton/.cache/lm-studio/bin"
